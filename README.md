@@ -15,4 +15,4 @@ This project serves as a code example accompanying my blog on Clean Code. It is 
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/ritwikmath/flask-mysql.git
-   cd flask-mysql-project
+   cd flask-mysql
