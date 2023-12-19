@@ -12,5 +12,5 @@ class Bootstrap:
         self.app.register_error_handler(Exception, handleException)
     
     def loadMiddleware(self):
-        self.app.before_request(beforeRequest)
         self.app.after_request(afterRequest)
+        self.app.before_request(beforeRequest)
