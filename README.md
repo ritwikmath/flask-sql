@@ -30,3 +30,17 @@ This project serves as a code example accompanying my blog on Clean Code. It is 
    ('jane_smith', 'jane.smith@example.com', 'hashed_password_2'),
    ('bob_jones', 'bob.jones@example.com', 'hashed_password_3');
    ```
+
+3. **Run as Docker Container:**
+   Create Docker Image
+   ```bash
+      docker build -t pysql .
+   ```
+   Windows:
+   ```bash
+   docker run --rm -p 5000:5000 -v ${PWD}:/usr/src/app --env-file .env flasksql
+   ```
+   Linux:
+   ```bash
+   docker run --rm -p 5000:5000 -v $(pwd):/usr/src/app --env-file .env flasksql
+   ```
