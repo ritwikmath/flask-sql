@@ -1,5 +1,5 @@
-from flask import request
+from flask import request, jsonify
 
 def beforeRequest():
-    # print(request.path, request.method)
-    pass
+    if request.headers.get("Authorization") == "hello1234" and request.method != "OPTIONS":
+        return jsonify({"error": "Not authenticated"}), 401
