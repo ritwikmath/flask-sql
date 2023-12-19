@@ -34,7 +34,7 @@ This project serves as a code example accompanying my blog on Clean Code. It is 
 3. **Run as Docker Container:**
    Create Docker Image
    ```bash
-      docker build -t pysql .
+      docker build -t flasksql .
    ```
    Windows:
    ```bash
