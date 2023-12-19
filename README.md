@@ -31,6 +31,7 @@ This project serves as a code example accompanying my blog on Clean Code. It is 
    ('bob_jones', 'bob.jones@example.com', 'hashed_password_3');
    ```
 3. **Create ENV file**
+
    Create a .env file in project root directory 
    ```text
    MYSQL_USER=root
@@ -42,6 +43,7 @@ This project serves as a code example accompanying my blog on Clean Code. It is 
    ```
 
 4. **Run as Docker Container:**
+   
    Create Docker Image
    ```bash
       docker build -t flasksql .
