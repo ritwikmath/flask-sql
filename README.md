@@ -30,8 +30,18 @@ This project serves as a code example accompanying my blog on Clean Code. It is 
    ('jane_smith', 'jane.smith@example.com', 'hashed_password_2'),
    ('bob_jones', 'bob.jones@example.com', 'hashed_password_3');
    ```
+3. **Create ENV file**
+   Create a .env file in project root directory 
+   ```text
+   MYSQL_USER=root
+   MYSQL_PASSWORD=secret
+   MYSQL_HOST=host.docker.internal
+   MYSQL_PORT=3306
+   MYSQL_DB=test
+   ENV=DEV
+   ```
 
-3. **Run as Docker Container:**
+4. **Run as Docker Container:**
    Create Docker Image
    ```bash
       docker build -t flasksql .
