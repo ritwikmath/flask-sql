@@ -16,3 +16,17 @@ This project serves as a code example accompanying my blog on Clean Code. It is 
    ```bash
    git clone https://github.com/ritwikmath/flask-mysql.git
    cd flask-mysql
+
+2. **Create User Table in Database:**
+   ```sql
+   CREATE TABLE users (
+      user_id INT PRIMARY KEY AUTO_INCREMENT,
+      username VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL,
+      password VARCHAR(255) NOT NULL
+   );
+   INSERT INTO users (username, email, password) VALUES
+   ('john_doe', 'john.doe@example.com', 'hashed_password_1'),
+   ('jane_smith', 'jane.smith@example.com', 'hashed_password_2'),
+   ('bob_jones', 'bob.jones@example.com', 'hashed_password_3');
+   ```

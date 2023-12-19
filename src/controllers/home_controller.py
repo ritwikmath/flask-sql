@@ -1,6 +1,9 @@
+from src.models.user_model import UserModel
+import json
 class HomeController:
     def __init__(self):
-        pass
+        self.__user_model = UserModel()
 
     def index(self):
-        return "Hello Developers!"
+        users = self.__user_model.index()
+        return json.dumps({"data": users})

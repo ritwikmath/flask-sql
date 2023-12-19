@@ -12,4 +12,4 @@ class Database:
         cnx = mysql.connector.connect(user=self.__user, password=self.__pass,
                               host=self.__host,
                               database=self.__db)
-        return cnx.cursor, cnx.close
+        return cnx.cursor(), cnx.close
