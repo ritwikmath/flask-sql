@@ -1,7 +1,9 @@
 from src.errors.exception import handleException
+from src.errors.handle_db_error import handleDbError
 from src.middlewares.before_request import beforeRequest
 from src.middlewares.after_request import afterRequest
 from src.routes import routes
+import mysql.connector
 
 class Bootstrap:
     def __init__(self, app):
@@ -12,6 +14,7 @@ class Bootstrap:
     
     def __handleErrors(self):
         self.app.register_error_handler(Exception, handleException)
+        self.app.register_error_handler(mysql.connector.Error, handleDbError)
     
     def __loadMiddleware(self):
         self.app.after_request(afterRequest)
