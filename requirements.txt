@@ -6,3 +6,4 @@ pytest
 pandas
 pyjwt
 pydantic[email]
+bcrypt

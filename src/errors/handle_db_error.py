@@ -1,7 +1,6 @@
 from flask import jsonify
 import traceback
 import os
-import sys
 
 def handleDbError(e):
     data = {"error":"Service unavailable"}
