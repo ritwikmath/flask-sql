@@ -6,3 +6,7 @@ user_bp = Blueprint("users", __name__, url_prefix="/users")
 @user_bp.post("")
 def create():
     return UserController().create()
+
+@user_bp.get("")
+def index():
+    return UserController().index()

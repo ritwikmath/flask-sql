@@ -7,3 +7,4 @@ pandas
 pyjwt
 pydantic[email]
 bcrypt
+SQLAlchemy

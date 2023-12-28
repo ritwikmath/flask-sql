@@ -1,3 +1,3 @@
-class Model:
-    def getKeyValue(self, cursor):
-        pass
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()

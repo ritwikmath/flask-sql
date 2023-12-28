@@ -1,8 +1,14 @@
 from flask import request
 from src.validators.user_validator import UserValidator
 import json
+from src.models.user_model import UserModel
 
 class UserController:
+    def index(self):
+        data = UserModel().index()
+        return json.loads(json.dumps(data, default=str))
+
     def create(self):
-        data = UserValidator(**request.json)
-        return json.loads(data.model_dump_json())
+        validated_data = UserValidator(**request.json)
+        UserModel().create(validated_data.model_dump())
+        return {"message": "User added successfully"}

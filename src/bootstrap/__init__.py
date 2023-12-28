@@ -4,7 +4,7 @@ from src.errors.handle_validation_error import handleValidationError
 from src.middlewares.before_request import beforeRequest
 from src.middlewares.after_request import afterRequest
 from src.routes import routes
-import mysql
+import sqlalchemy
 from pydantic import ValidationError
 
 class Bootstrap:
@@ -16,7 +16,7 @@ class Bootstrap:
     
     def __handleErrors(self):
         self.app.register_error_handler(Exception, handleException)
-        self.app.register_error_handler(mysql.connector.Error, handleDbError)
+        self.app.register_error_handler(sqlalchemy.orm.exc.DetachedInstanceError, handleDbError)
         self.app.register_error_handler(ValidationError, handleValidationError)
     
     def __loadMiddleware(self):
