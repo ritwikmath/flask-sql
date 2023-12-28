@@ -3,11 +3,21 @@ from src.models.user_model import UserModel
 from src.validators.user_validator import UserValidator
 from src.validators.auth_validator import AuthValidator
 import jwt
+import bcrypt
+from werkzeug.exceptions import BadRequest
 
 class AuthController:
     def login(self):
-        data = AuthValidator(**request.json)
-        token = jwt.encode(data.model_dump(), "secret", algorithm="HS256")
+        validated_data = AuthValidator(**request.json)
+        data = UserModel().single({"email": validated_data.model_dump()['email']})
+        if not bcrypt.checkpw(validated_data.password.encode('utf-8'), data.password.encode('utf-8')):
+            raise BadRequest('Password did not match')
+        tokenize_data = {
+            "name": data.name,
+            "email": data.email,
+            "registered_at": data.registered_at.strftime("%m/%d/%Y, %H:%M:%S")
+        }
+        token = jwt.encode(tokenize_data, "secret", algorithm="HS256")
         return {"token": token}
 
     def register(self):
