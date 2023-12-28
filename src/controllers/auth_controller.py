@@ -4,14 +4,14 @@ from src.validators.user_validator import UserValidator
 from src.validators.auth_validator import AuthValidator
 import jwt
 import bcrypt
-from werkzeug.exceptions import BadRequest
+from werkzeug.exceptions import Forbidden
 
 class AuthController:
     def login(self):
         validated_data = AuthValidator(**request.json)
         data = UserModel().single({"email": validated_data.model_dump()['email']})
         if not bcrypt.checkpw(validated_data.password.encode('utf-8'), data.password.encode('utf-8')):
-            raise BadRequest('Password did not match')
+            raise Forbidden('Password did not match')
         tokenize_data = {
             "name": data.name,
             "email": data.email,
