@@ -22,7 +22,9 @@ class UserModel():
     @session
     def create(self, session, data):
         user = self.UserBase(**data)
-        # session.add(user)
+        session.add(user)
+        session.flush()
+        return user
     
     class UserBase(Base):
         __tablename__ = "users"

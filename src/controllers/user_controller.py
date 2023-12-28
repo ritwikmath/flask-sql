@@ -10,5 +10,9 @@ class UserController:
 
     def create(self):
         validated_data = UserValidator(**request.json)
-        UserModel().create(validated_data.model_dump())
-        return {"message": "User added successfully"}
+        user = UserModel().create(validated_data.model_dump())
+        print(user.id, user)
+        data = {
+            "id": user.id,
+        }
+        return {"message": "User added successfully", "data": data}
