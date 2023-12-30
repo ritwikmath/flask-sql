@@ -8,3 +8,4 @@ pyjwt
 pydantic[email]
 bcrypt
 SQLAlchemy
+flask-marshmallow

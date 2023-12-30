@@ -2,21 +2,23 @@ from src.models import Base
 from src.helpers.db_session import session
 from sqlalchemy import Column, Integer, String, DateTime
 from datetime import datetime
-
+from src.schema.user_schema import UserSchema
 class UserModel():
     def __init__(self):
-        # self.__table = "users"
+        self.__user_schema = UserSchema(many=True)
         # self.__user_base = self.UserBase()
         pass
 
     @session
     def single(self, session, condition):
-        data = session.query(self.UserBase).filter_by(**condition).first()
+        user = session.query(self.UserBase).filter_by(**condition).first()
+        data = self.__user_schema.dump(user)
         return data
 
     @session
     def index(self, session):
-        data = session.query(self.UserBase).all()
+        users = session.query(self.UserBase).all()
+        data = self.__user_schema.dump(users)
         return data
     
     @session
