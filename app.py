@@ -1,11 +1,13 @@
-from flask import Flask
+from flask import Flask, g
+from flask_mail import Mail
 import os
 from src.schema import Schema
+# from src.db import Database
 
 app = Flask(__name__)
 
 Schema().ma = app
-print(Schema().ma)
+mail = Mail(app)
 from src.bootstrap import Bootstrap
 Bootstrap(app)
 

@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr, field_validator
 from src.models.user_model import UserModel
 
-class AuthValidator(BaseModel, validate_assignment=True):
+class LoginValidator(BaseModel, validate_assignment=True):
     email: EmailStr
     password: str
     

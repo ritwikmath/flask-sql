@@ -9,3 +9,4 @@ pydantic[email]
 bcrypt
 SQLAlchemy
 flask-marshmallow
+Flask-Mail

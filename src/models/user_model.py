@@ -2,23 +2,26 @@ from src.models import Base
 from src.helpers.db_session import session
 from sqlalchemy import Column, Integer, String, DateTime
 from datetime import datetime
-from src.schema.user_schema import UserSchema
-class UserModel():
+from src.models.base_model import BaseModel
+from werkzeug.exceptions import BadRequest
+
+class UserModel(BaseModel):
     def __init__(self):
-        self.__user_schema = UserSchema(many=True)
         # self.__user_base = self.UserBase()
         pass
 
     @session
-    def single(self, session, condition):
+    def single(self, session, condition, serialization = False):
         user = session.query(self.UserBase).filter_by(**condition).first()
-        data = self.__user_schema.dump(user)
-        return data
+        if serialization:
+            data = self.serialize(user)
+            return data
+        return user
 
     @session
     def index(self, session):
         users = session.query(self.UserBase).all()
-        data = self.__user_schema.dump(users)
+        data = self.serialize(users)
         return data
     
     @session
@@ -28,6 +31,15 @@ class UserModel():
         session.flush()
         return user
     
+    @session
+    def update(self, session, condition, data):
+        user = session.query(self.UserBase).filter_by(**condition).first()
+        if not user:
+            raise BadRequest('User not found')
+        for k,v in data.items():
+            setattr(user, k, v)
+        session.commit()
+    
     class UserBase(Base):
         __tablename__ = "users"
 
@@ -36,3 +48,4 @@ class UserModel():
         email = Column(String(150), nullable=False, unique=True)
         password = Column(String(150), nullable=False)
         registered_at = Column(DateTime, default=datetime.now, nullable=False)
+        otp = Column(String(5), default=None)
