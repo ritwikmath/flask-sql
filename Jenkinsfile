@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Prebuilt') {
             steps {
-                echo 'Hello Developers!'
+                ls -al
             }
         }
     }
