@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Prebuilt') {
             steps {
-                ls -al
+                sh "ls -al"
             }
         }
     }
