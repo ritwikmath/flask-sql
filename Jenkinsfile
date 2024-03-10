@@ -4,6 +4,7 @@ pipeline {
         stage('Prebuilt') {
             steps {
                 sh "ls -al"
+                echo "$MONGO_USER"
             }
         }
     }
