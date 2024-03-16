@@ -1,4 +1,4 @@
-from src.models import Base
+from src.models.base import Base
 from src.helpers.db_session import session
 from sqlalchemy import Column, Integer, String, DateTime
 from datetime import datetime

@@ -1,7 +1,7 @@
 from flask import Flask, g
 from flask_mail import Mail
 import os
-from src.schema import Schema
+from src.schema.base_schema import Schema
 # from src.db import Database
 
 app = Flask(__name__)

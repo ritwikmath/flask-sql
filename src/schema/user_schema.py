@@ -1,4 +1,4 @@
-from src.schema import Schema
+from src.schema.base_schema import Schema
 
 class UserSchema(Schema().ma.Schema):
     class Meta:

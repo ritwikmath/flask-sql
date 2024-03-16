@@ -1,7 +1,7 @@
 import os
 import mysql.connector
 from sqlalchemy import create_engine
-from src.models import Base
+from src.models.base import Base
 from sqlalchemy.orm import sessionmaker
 
 class Database:
